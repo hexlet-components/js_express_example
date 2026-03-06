@@ -1,0 +1,30 @@
+{
+  "name": "js_express_example",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node bin/server.js",
+    "start:watch": "nodemon bin/server.js",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "debug": "*",
+    "express": "*",
+    "express-session": "*",
+    "method-override": "*",
+    "morgan": "*",
+    "pug": "*"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "eslint": "^10.0.2",
+    "globals": "^17.4.0",
+    "nodemon": "^3.1.14",
+    "npm-check-updates": "^19.6.3",
+    "supertest": "*",
+    "vitest": "*"
+  }
+}

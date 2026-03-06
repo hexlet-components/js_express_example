@@ -1,0 +1,31 @@
+extends ./layout.pug
+
+block content
+  p.text-muted Этот экран объединяет примеры из самостоятельных работ.
+  img.mb-3(src='/assets/images/logo.svg' alt='logo' width='120')
+
+  h2.h5 Текущее состояние
+  ul
+    li Запросов к приложению: #{requestCounter}
+    li Последний запрос: #{requestTime}
+    li Счетчик в сессии: #{sessionCounter}
+
+  h2.h5 Маршруты для проверки
+  ul
+    li
+      a(href='/users/42?page=3') GET /users/:id
+    li
+      a(href='/increment') GET /increment
+    li
+      a(href='/template-demo') GET /template-demo
+    li
+      a(href='/session/login') GET /session/login
+
+  h2.h5 Пример формы (flash)
+  form(action='/users' method='post')
+    button.btn.btn-primary(type='submit') Создать пользователя
+
+  h2.h5.mt-4 Публичные посты
+  ul
+    each post in posts
+      li= `${post.id}: ${post.title}`
