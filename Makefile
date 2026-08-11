@@ -1,20 +1,21 @@
 install:
-	npm install
+	pnpm install
 
 start:
-	npm run start
+	pnpm run start
 
 test:
-	npm run test
+	pnpm run test
 
 lint:
-	npm run lint
+	pnpm run lint
+	pnpm --silent run format:check
 
 lint-fix:
-	npm run lint:fix
+	pnpm run lint:fix
 
 watch:
-	npm run start:watch
+	pnpm run start:watch
 
 update-deps:
-	npx ncu -u
+	pnpm exec ncu -u
