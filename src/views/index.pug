@@ -1,31 +1,33 @@
 extends ./layout.pug
 
 block content
-  p.text-muted Этот экран объединяет примеры из самостоятельных работ.
+  p.text-gray-500 Этот экран объединяет примеры из самостоятельных работ.
   img.mb-3(src='/assets/images/logo.svg' alt='logo' width='120')
 
-  h2.h5 Текущее состояние
-  ul
+  h2.mt-6.mb-2.text-lg.font-semibold Текущее состояние
+  ul.list-disc.pl-5
     li Запросов к приложению: #{requestCounter}
     li Последний запрос: #{requestTime}
     li Счетчик в сессии: #{sessionCounter}
 
-  h2.h5 Маршруты для проверки
-  ul
+  h2.mt-6.mb-2.text-lg.font-semibold Маршруты для проверки
+  ul.list-disc.pl-5
     li
-      a(href='/users/42?page=3') GET /users/:id
+      a.text-blue-600.underline(href='/users/42?page=3') GET /users/:id
     li
-      a(href='/increment') GET /increment
+      a.text-blue-600.underline(href='/increment') GET /increment
     li
-      a(href='/template-demo') GET /template-demo
+      a.text-blue-600.underline(href='/template-demo') GET /template-demo
     li
-      a(href='/session/login') GET /session/login
+      a.text-blue-600.underline(href='/session/login') GET /session/login
 
-  h2.h5 Пример формы (flash)
+  h2.mt-6.mb-2.text-lg.font-semibold Пример формы (flash)
   form(action='/users' method='post')
-    button.btn.btn-primary(type='submit') Создать пользователя
+    //- Вариант `hover:` пишется атрибутом: в точечной записи pug принимает
+    //- двоеточие за начало фильтра и падает с PUG:INVALID_TOKEN.
+    button(class='rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700' type='submit') Создать пользователя
 
-  h2.h5.mt-4 Публичные посты
-  ul
+  h2.mt-6.mb-2.text-lg.font-semibold Публичные посты
+  ul.list-disc.pl-5
     each post in posts
       li= `${post.id}: ${post.title}`

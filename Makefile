@@ -1,5 +1,10 @@
+setup: install build
+
 install:
 	pnpm install
+
+build:
+	pnpm run build
 
 start:
 	pnpm run start

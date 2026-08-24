@@ -37,10 +37,17 @@ app.use(
   }),
 );
 
+const alertClasses = {
+  success: "border-green-200 bg-green-50 text-green-800",
+  error: "border-red-200 bg-red-50 text-red-800",
+};
+
 // flash middleware: stores messages in session and clears them after read
 app.use((req, res, next) => {
   const flashMessages = req.session.flash ?? [];
   res.locals.flash = flashMessages;
+  res.locals.alertClass = (type) =>
+    alertClasses[type] ?? "border-gray-200 bg-gray-50 text-gray-800";
   req.session.flash = [];
   res.flash = (type, message) => {
     req.session.flash = req.session.flash ?? [];
@@ -50,8 +57,9 @@ app.use((req, res, next) => {
 });
 
 const basedir = __dirname;
-const staticPath = path.join(basedir, "static");
-app.use("/assets", express.static(staticPath));
+app.use("/assets", express.static(path.join(basedir, "static")));
+// Собранный css лежит рядом с исходниками, а не в них: его пишет vite в dist/.
+app.use("/assets", express.static(path.join(basedir, "..", "dist")));
 
 let requestCounter = 0;
 app.use((req, _res, next) => {

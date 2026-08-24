@@ -36,6 +36,17 @@ describe("app", () => {
     expect(svg).toContain("<svg");
   });
 
+  // Сборка стилей проверяется прогоном, потому что её отказ выглядит как успех:
+  // vite отчитывается зелёным, `main.css` лежит на месте, а классов из
+  // pug-шаблонов в нём нет, и страница приходит без оформления.
+  it("GET /assets/main.css serves styles built from templates", async () => {
+    const res = await request(app).get("/assets/main.css");
+    expect(res.status).toBe(200);
+    expect(res.headers["content-type"]).toContain("text/css");
+    expect(res.text).toContain(".max-w-3xl");
+    expect(res.text).toContain(".bg-green-50");
+  });
+
   it("POST /api/notes returns 422 for invalid payload", async () => {
     const res = await request(app).post("/api/notes").send({});
     expect(res.status).toBe(422);
