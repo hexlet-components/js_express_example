@@ -1,0 +1,7 @@
+<% layout("./layout") %>
+<h2 class="mb-2 text-xl font-semibold"><%= it.title %></h2>
+<ul class="list-disc pl-5">
+  <% it.items.forEach((item) => { %>
+  <li><%= item %></li>
+  <% }) %>
+</ul>

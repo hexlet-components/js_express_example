@@ -1,0 +1,30 @@
+<% layout("./layout") %>
+<p class="text-gray-500">Этот экран объединяет примеры из самостоятельных работ.</p>
+<img class="mb-3" src="/assets/images/logo.svg" alt="logo" width="120">
+
+<h2 class="mt-6 mb-2 text-lg font-semibold">Текущее состояние</h2>
+<ul class="list-disc pl-5">
+  <li>Запросов к приложению: <%= it.requestCounter %></li>
+  <li>Последний запрос: <%= it.requestTime %></li>
+  <li>Счетчик в сессии: <%= it.sessionCounter %></li>
+</ul>
+
+<h2 class="mt-6 mb-2 text-lg font-semibold">Маршруты для проверки</h2>
+<ul class="list-disc pl-5">
+  <li><a class="text-blue-600 underline" href="/users/42?page=3">GET /users/:id</a></li>
+  <li><a class="text-blue-600 underline" href="/increment">GET /increment</a></li>
+  <li><a class="text-blue-600 underline" href="/template-demo">GET /template-demo</a></li>
+  <li><a class="text-blue-600 underline" href="/session/login">GET /session/login</a></li>
+</ul>
+
+<h2 class="mt-6 mb-2 text-lg font-semibold">Пример формы (flash)</h2>
+<form action="/users" method="post">
+  <button class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700" type="submit">Создать пользователя</button>
+</form>
+
+<h2 class="mt-6 mb-2 text-lg font-semibold">Публичные посты</h2>
+<ul class="list-disc pl-5">
+  <% it.posts.forEach((post) => { %>
+  <li><%= `${post.id}: ${post.title}` %></li>
+  <% }) %>
+</ul>

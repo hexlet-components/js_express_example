@@ -38,7 +38,7 @@ describe("app", () => {
 
   // Сборка стилей проверяется прогоном, потому что её отказ выглядит как успех:
   // vite отчитывается зелёным, `main.css` лежит на месте, а классов из
-  // pug-шаблонов в нём нет, и страница приходит без оформления.
+  // шаблонов в нём нет, и страница приходит без оформления.
   it("GET /assets/main.css serves styles built from templates", async () => {
     const res = await request(app).get("/assets/main.css");
     expect(res.status).toBe(200);

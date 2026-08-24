@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JS Express Example</title>
+    <link rel="stylesheet" href="/assets/main.css">
+  </head>
+  <body class="bg-white text-gray-900">
+    <div class="mx-auto max-w-3xl px-4 py-8">
+      <h1 class="mb-6 text-3xl font-bold">JS Express Example</h1>
+      <% if (it.flash && it.flash.length) { %>
+        <% it.flash.forEach((message) => { %>
+        <div class="mb-4 rounded border px-4 py-3 <%= it.alertClass(message.type) %>"><%= message.message %></div>
+        <% }) %>
+      <% } %>
+      <%~ it.body %>
+    </div>
+  </body>
+</html>

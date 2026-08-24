@@ -1,6 +1,7 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import debug from "debug";
+import { Eta } from "eta";
 import express from "express";
 import session from "express-session";
 import methodOverride from "method-override";
@@ -21,8 +22,14 @@ class AccessDeniedError extends Error {
 
 const app = express();
 
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "pug");
+const viewsDir = path.join(__dirname, "views");
+const eta = new Eta({ views: viewsDir });
+
+app.set("views", viewsDir);
+app.set("view engine", "eta");
+app.engine("eta", (file, data, done) => {
+  done(null, eta.render(path.relative(viewsDir, file), data));
+});
 
 app.use(morgan(":method :url :status :response-time"));
 app.use(express.json());

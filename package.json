@@ -17,11 +17,11 @@
   },
   "dependencies": {
     "debug": "*",
+    "eta": "*",
     "express": "*",
     "express-session": "*",
     "method-override": "*",
-    "morgan": "*",
-    "pug": "*"
+    "morgan": "*"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
